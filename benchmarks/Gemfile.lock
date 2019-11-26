@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    benchmark-ips (2.7.2)
+    erubis (2.7.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  benchmark-ips
+  erubis
+
+BUNDLED WITH
+   2.0.2

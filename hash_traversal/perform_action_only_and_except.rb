@@ -6,7 +6,7 @@ class AllPossibleKeyPaths
     traverse(hash, [], [])
   end
 
-  # NORE: returns array
+  # NOTE: returns array
   def traverse(hash, parents, result)
     hash.each do |key, val|
       if val.is_a?(Hash)
