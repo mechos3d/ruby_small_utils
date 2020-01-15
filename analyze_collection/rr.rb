@@ -13,4 +13,4 @@ arr = [
 # ]
 
 pp CollectionAnalyzer.new.call(arr, traverse_hashes: true)
-pp CollectionAnalyzer.new.call(arr)
+# pp CollectionAnalyzer.new.call(arr)

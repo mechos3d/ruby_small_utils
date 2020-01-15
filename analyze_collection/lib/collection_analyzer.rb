@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
+# TODO: для "проблемных" событий - хорошо бы иметь возможность возвращать id этих элементов.
+#      ( что может являться таким id - задает юзер )
+#
+# TODO: придумать, что делать с кейсами, когда одно из значений - это массив хэшей, о которых мы тоже что-то хотим узрнать..
+# [
+#   { foo: [ { bar: 1 },{ bar: 2 } ] },
+#   { foo: [ { bar: 3 },{ bar: 5 } ] },
+# ]
+#
 # TODO: count of elements, for which given block returns true.
+
 # TODO: also return the anomalaous elements, not just counts.
 #       ( maybe in other method call)
 
@@ -78,7 +88,8 @@ class CollectionAnalyzer
 
   def average(values)
     arr = values.reject(&:nil?).select { |x| x.is_a?(Numeric) }
-    arr.sum.to_f / arr.count
+    res = arr.sum.to_f / arr.count
+    res.nan? ? nil : res
   end
 
   def median(values)
