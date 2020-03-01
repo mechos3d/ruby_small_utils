@@ -1,5 +1,19 @@
 require 'rspec/expectations'
 
+# TODO: It's a work-in-progress. This matcher will not show the diff when expected and actual differ.
+
+# DOC:
+# Consider having two hashes:
+# foo = { a: [1, 2, 3] }
+# bar = { a: [2, 3, 1] }
+# the standard Rspec hash equality check returns false for these because
+# the arrays inside are sorted differently.
+# Rspec has 'match_array' for checking array equality in such cases.
+# But there is no such thing when the array is a valued of a hash.
+# This matcher is just for that !
+
+# CustomMatchers::MatchHash.new.call(foo, bar) should return true for these.
+
 module CustomMatchers
   class MatchHash
 
