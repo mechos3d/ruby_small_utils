@@ -1,3 +1,22 @@
+# TODO: make it only one method, but accepting arguments 'only_keys_mask' / 'except_keys_mask' ( having both of them is not acceptable )
+# TODO: add some Rspec / minitest tests.
+# TODO: add deep duplication of original hash (to pervent mutating any element of it)
+
+# DOC:
+# Usage examples:
+#      original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
+#      only_keys = { a1: 1, a2: { b1: 1 } }
+#
+#      pp MechosUtils::HashDeepModify::OnlyKeys.new.call(original, only_keys) { |x| x + 1 }
+#      => {:a1=>1, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>0}
+#
+#      -------------------------
+#
+#      original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
+#      except_keys = { a1: 1, a2: { b2: 1 } }
+#
+#      pp MechosUtils::HashDeepModify::ExceptKeys.new.call(original, except_keys) { |x| x + 1 }
+#      => {:a1=>0, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>1}
 module MechosUtils
   module HashDeepModify
     module Shared
@@ -17,11 +36,6 @@ module MechosUtils
       end
     end
 
-    # original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
-    # only_keys = { a1: 1, a2: { b1: 1 } }
-    #
-    # pp OnlyKeys.new.call(original, only_keys) { |x| x + 1 }
-    ## => {:a1=>1, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>0}
     class OnlyKeys
       def call(original, selected_positions)
         keys_paths = Shared.all_possible_key_paths(selected_positions)
@@ -46,11 +60,6 @@ module MechosUtils
       end
     end
 
-    # original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
-    # except_keys = { a1: 1, a2: { b2: 1 } }
-
-    # pp ExceptKeys.new.call(original, except_keys) { |x| x + 1 }
-    # => {:a1=>0, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>1}
     class ExceptKeys
       def call(original, excepts = nil, &block)
         result = original.dup # TODO: really need deep_dup - not to mutate the 'original' hash
