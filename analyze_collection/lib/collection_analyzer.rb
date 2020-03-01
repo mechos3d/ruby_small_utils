@@ -20,10 +20,12 @@ class CollectionAnalyzer
     validate_input(arr)
     @traverse_hashes = traverse_hashes
 
+    #TODO: if the array is not uniform (has elements of different types - return an error with an explanation)
     element = arr.first
     # NOTE: element MUST be a Hash
     result = {}
 
+    # TODO: change to 'each_with_object({})':
     element.each do |key, value|
       result[key] = process_element([key], value, arr)
     end
