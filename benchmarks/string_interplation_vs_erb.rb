@@ -54,12 +54,6 @@ Benchmark.ips do |x|
   x.compare!
 end
 
-# Warming up --------------------------------------
-#           array_join    91.715k i/100ms
-#             with_erb     4.845k i/100ms
-#          with_erubis     5.188k i/100ms
-#        interpolation   118.873k i/100ms
-#            with_gsub    55.455k i/100ms
 # Calculating -------------------------------------
 #           array_join      1.212M (± 5.9%) i/s -      6.053M in   5.020028s
 #             with_erb     49.615k (± 3.2%) i/s -    251.940k in   5.083494s

@@ -14,9 +14,6 @@ Benchmark.ips do |x|
   x.compare!
 end
 
-# Warming up --------------------------------------
-#                first    46.000  i/100ms
-#               second   271.068k i/100ms
 # Calculating -------------------------------------
 #                first    444.063  (± 4.3%) i/s -      2.254k in   5.085390s
 #               second      9.404M (± 5.8%) i/s -     46.895M in   5.005498s
