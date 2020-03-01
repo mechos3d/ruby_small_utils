@@ -7,16 +7,16 @@
 #      original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
 #      only_keys = { a1: 1, a2: { b1: 1 } }
 #
-#      pp MechosUtils::HashDeepModify::OnlyKeys.new.call(original, only_keys) { |x| x + 1 }
-#      => {:a1=>1, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>0}
+#      pp MechosUtils::HashDeepModify::OnlyKeys.new.call(original, only_keys) { |val| val + 5 }
+#      => {:a5=>5, :a2=>{:b5=>[5, 5, 5], :b2=>0}, :a3=>0}
 #
 #      -------------------------
 #
 #      original = { a1: 0, a2: { b1: [0, 0, 0], b2: 0 }, a3: 0 }
 #      except_keys = { a1: 1, a2: { b2: 1 } }
 #
-#      pp MechosUtils::HashDeepModify::ExceptKeys.new.call(original, except_keys) { |x| x + 1 }
-#      => {:a1=>0, :a2=>{:b1=>[1, 1, 1], :b2=>0}, :a3=>1}
+#      pp MechosUtils::HashDeepModify::ExceptKeys.new.call(original, except_keys) { |val| val + 5 }
+#      => {:a5=>0, :a2=>{:b5=>[5, 5, 5], :b2=>0}, :a3=>5}
 module MechosUtils
   module HashDeepModify
     module Shared
@@ -77,7 +77,7 @@ module MechosUtils
             next if keys_paths.include?(current_path)
 
             if hash[key].is_a?(Enumerable)
-              hash[key] = hash[key].map { |x|  yield(x) }
+              hash[key] = hash[key].map { |x| yield(x) }
             else
               hash[key] = yield(val)
             end
