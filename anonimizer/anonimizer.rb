@@ -1,7 +1,6 @@
-require 'pry'
-
-# TODO: в potok-legacy есть более продвинутый вариант - с кэшированием.
-# TODO: лушче оперировать сразу буквами, а не ordinal'ами
+# TODO: Potok application has a more advanced variant - making use of caching, need to add it here.
+# TODO: better to work with characters themselves, not their ordinals (will make the script a bit simpler)
+# TODO: Add Rspec/minitest tests
 
 class Anonimizer
   DIGITS_ORDINALS = (48..57).freeze
@@ -43,4 +42,6 @@ class Anonimizer
   end
 end
 
-puts Anonimizer.new.call('Абырвалг ОппА fgfateeeew Zummfafa 12328. !-+===')
+original = 'Абырвалг ОппА fgfateeeew Zummfafa 12328. !-+==='
+anonimized = Anonimizer.new.call('Абырвалг ОппА fgfateeeew Zummfafa 12328. !-+===')
+pp({ original: original, anonimized: anonimized })
