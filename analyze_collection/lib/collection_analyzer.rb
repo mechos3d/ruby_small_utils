@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: add tests
+#
 # TODO: для "проблемных" событий - хорошо бы иметь возможность возвращать id этих элементов.
 #      ( что может являться таким id - задает юзер )
 #
@@ -11,10 +13,10 @@
 #
 # TODO: count of elements, for which given block returns true.
 
-# TODO: also return the anomalaous elements, not just counts.
+# TODO: also return the anomalous elements, not just counts.
 #       ( maybe in other method call)
 
-# TODO: ipnut validations with good error-messaages
+# TODO: input validations with good error-messages
 class CollectionAnalyzer
   def call(arr, traverse_hashes: false)
     validate_input(arr)
@@ -100,11 +102,11 @@ class CollectionAnalyzer
   end
 end
 
-arr = [
-  { a: 1, b: '2', c: 33, d: { d1: 'd1', d2: 'd2' } },
-  { a: 2, b: '1', c: nil, d: { d1: nil, d2: 'd2' } },
-  { a: 3, b: '', c: 33, d: { d1: 'd1', d2: '' } }
-]
+# arr = [
+#   { a: 1, b: '2', c: 33, d: { d1: 'd1', d2: 'd2' } },
+#   { a: 2, b: '1', c: nil, d: { d1: nil, d2: 'd2' } },
+#   { a: 3, b: '', c: 33, d: { d1: 'd1', d2: '' } }
+# ]
 
 # arr = [
 # { a: 1, b: '2' , c: 33 },
@@ -112,5 +114,5 @@ arr = [
 # { a: 3, b: '' , c: 33 },
 # ]
 
-pp CollectionAnalyzer.new.call(arr, traverse_hashes: true)
-pp CollectionAnalyzer.new.call(arr)
+# pp CollectionAnalyzer.new.call(arr, traverse_hashes: true)
+# pp CollectionAnalyzer.new.call(arr)
