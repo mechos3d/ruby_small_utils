@@ -1,3 +1,6 @@
+# TODO: 'dividers' is bad - the method needs to calculate itself.
+# (can send number of steps)
+
 require 'ostruct'
 
 # TODO: accept a block instead of ugly 'method:, arguments:' stuff
